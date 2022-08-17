@@ -1,0 +1,36 @@
+{
+  "name": "vite-plugin-child-process",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "./dist/core.js",
+  "types": "./dist/core.d.ts",
+  "bugs": {
+    "url": "https://github.com/krist7599555/ts-async-pipe/issues",
+    "email": "krist7599555@gmail.com"
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "zx",
+    "child-process",
+    "hotreload"
+  ],
+  "author": "Krist Ponpairin <krist7599555>",
+  "license": "ISC",
+  "peerDependencies": {
+    "vite": "^3.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.6",
+    "vite": "^3.0.8"
+  },
+  "dependencies": {
+    "debug": "^4.3.4",
+    "rxjs": "^7.5.6",
+    "zx": "^7.0.8"
+  }
+}

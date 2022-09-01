@@ -10,7 +10,8 @@
     "email": "krist7599555@gmail.com"
   },
   "scripts": {
-    "build": "vite build"
+    "build": "tsc",
+    "publishx": "pnpm run build && npm version patch && npm publish"
   },
   "keywords": [
     "vite",

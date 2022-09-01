@@ -80,6 +80,12 @@ export const child_process = (config: VitePluginChildProcess): Plugin => {
         old_process.push(local_process);
         local_process.quiet();
 
+        local_process.stderr.on("data", (s: Stream) =>
+          log(s.toString().trimEnd())
+        );
+        local_process.stderr.on("error", (s: Stream) =>
+          log(s.toString().trimEnd())
+        );
         local_process.stdout.on("data", (s: Stream) =>
           log(s.toString().trimEnd())
         );

@@ -24,6 +24,9 @@ export interface VitePluginChildProcess {
   watch: (RegExp | string)[];
   /** @default true */
   log_enable?: boolean;
+
+  /** @default true */
+  throw?: boolean;
 }
 
 export const child_process = (config: VitePluginChildProcess): Plugin => {
@@ -32,6 +35,7 @@ export const child_process = (config: VitePluginChildProcess): Plugin => {
   const _watch = config?.watch.map((w) =>
     typeof w == "string" ? new RegExp(w) : w
   );
+  const _throw = config?.throw ?? true;
 
   const log = debug(`vite:child-process:${config.name ?? "untitle"}`);
   log.enabled = config?.log_enable ?? true;
@@ -78,7 +82,11 @@ export const child_process = (config: VitePluginChildProcess): Plugin => {
         await kill_all_process();
         const local_process: ProcessPromise = $`${_command}`;
         old_process.push(local_process);
+
         local_process.quiet();
+        if (!_throw) {
+          local_process.nothrow();
+        }
 
         local_process.stderr.on("data", (s: Stream) =>
           log(s.toString().trimEnd())

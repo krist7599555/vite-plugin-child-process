@@ -10,6 +10,8 @@ export interface VitePluginChildProcess {
     watch: (RegExp | string)[];
     /** @default true */
     log_enable?: boolean;
+    /** @default true */
+    throw?: boolean;
 }
 export declare const child_process: (config: VitePluginChildProcess) => Plugin;
 //# sourceMappingURL=vite-plugin-child-process.d.ts.map

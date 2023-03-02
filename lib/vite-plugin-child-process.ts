@@ -1,4 +1,5 @@
 import debug from "debug";
+import os from "node:os";
 import path from "node:path";
 import { Stream } from "node:stream";
 import {
@@ -64,6 +65,13 @@ export const child_process = (config: VitePluginChildProcess): Plugin => {
         "watcher file change",
         JSON.stringify(_watch.map((r) => `${r}`))
       );
+
+      if (os.platform() === "win32") {
+        log_watcher("patch os === win32 use powershell");
+        $.shell = "powershell.exe";
+        $.prefix = "";
+      }
+
       const files = new Observable<string>((o) => {
         watcher.on("ready", () => o.next(""));
         watcher.on("change", (id) => o.next(id));

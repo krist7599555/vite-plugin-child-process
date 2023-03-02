@@ -1,5 +1,9 @@
 # vite-plugin-child-process
 
+<!-- generate badge on https://shields.io -->
+
+![npm](https://img.shields.io/npm/v/vite-plugin-child-process) ![GitHub last commit](https://img.shields.io/github/last-commit/krist7599555/vite-plugin-child-process) ![npm](https://img.shields.io/npm/dm/vite-plugin-child-process)
+
 Vite plugin to run command when file change. Useful when script use local binary or have stateful behavior like websocket.
 
 ```typescript
